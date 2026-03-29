@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>一路有故事 - 智能空间导览</title>
+    <script src="https://webapi.amap.com/maps?v=2.0&key=df14a4b105815e204240a15e643237c2"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; height: 100vh; overflow: hidden; }
+        #container { max-width: 480px; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; background: white; position: relative; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 20px; text-align: center; flex-shrink: 0; }
+        .header h1 { font-size: 1.3rem; margin-bottom: 4px; }
+        .header p { font-size: 0.85rem; opacity: 0.9; }
+        .map-container { flex: 1; position: relative; min-height: 0; }
+        #map { width: 100%; height: 100%; }
+        .location-btn { position: absolute; bottom: 20px; right: 20px; width: 48px; height: 48px; background: white; border: none; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.2); font-size: 1.5rem; cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; }
+        .story-panel { position: absolute; bottom: 0; left: 0; right: 0; background: white; border-radius: 20px 20px 0 0; padding: 20px; box-shadow: 0 -5px 30px rgba(0,0,0,0.1); transform: translateY(100%); transition: transform 0.3s ease; max-height: 60vh; overflow-y: auto; z-index: 200; }
+        .story-panel.visible { transform: translateY(0); }
+        .panel-handle { width: 40px; height: 4px; background: #ddd; border-radius: 2px; margin: 0 auto 15px; }
+        .story-era { display: inline-block; background: #667eea; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; margin-bottom: 10px; }
+        .story-title { font-size: 1.2rem; color: #333; margin-bottom: 12px; line-height: 1.4; }
+        .story-content { color: #555; line-height: 1.8; font-size: 0.95rem; margin-bottom: 15px; }
+        .story-question { background: #f8f9fa; padding: 15px; border-radius: 12px; border-left: 4px solid #667eea; font-style: italic; color: #667eea; font-size: 0.9rem; margin-bottom: 12px; }
+        .action-btns { display: flex; gap: 10px; margin-bottom: 15px; }
+        .btn { flex: 1; padding: 12px; border: none; border-radius: 10px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .btn-secondary { background: #f0f0f0; color: #333; }
+        .btn:active { transform: scale(0.98); }
+        .chat-area { border-top: 1px solid #eee; padding-top: 15px; }
+        .chat-title { font-size: 0.85rem; color: #666; margin-bottom: 10px; text-align: center; }
+        .messages { max-height: 150px; overflow-y: auto; margin-bottom: 10px; }
+        .message { margin-bottom: 10px; display: flex; gap: 8px; }
+        .message.ai { flex-direction: row; }
+        .message.user { flex-direction: row-reverse; }
+        .message-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+        .message.ai .message-avatar { background: #e3f2fd; }
+        .message.user .message-avatar { background: #e8f5e9; }
+        .message-bubble { background: #f5f5f5; padding: 10px 14px; border-radius: 16px; max-width: 75%; font-size: 0.9rem; line-height: 1.5; }
+        .message.ai .message-bubble { background: #e3f2fd; border-bottom-left-radius: 4px; }
+        .message.user .message-bubble { background: #e8f5e9; border-bottom-right-radius: 4px; }
+        .input-area { display: flex; gap: 8px; }
+        .input-area input { flex: 1; padding: 10px 14px; border: 1px solid #e0e0e0; border-radius: 20px; font-size: 0.9rem; outline: none; }
+        .input-area input:focus { border-color: #667eea; }
+        .input-area button { padding: 10px 18px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 20px; font-size: 0.85rem; cursor: pointer; }
+        .close-panel { position: absolute; top: 15px; right: 15px; width: 32px; height: 32px; background: #f5f5f5; border: none; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="header">
+            <h1>一路有故事</h1>
+            <p>点击定位，AI生成附近历史故事</p>
+        </div>
+        <div class="map-container">
+            <div id="map"></div>
+            <div class="loading" id="mapLoading">
+                <div style="width:40px;height:40px;border:3px solid #f3f3f3;border-top:3px solid #667eea;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px;"></div>
+                <p>正在加载地图...</p>
+            </div>
+            <button class="location-btn" onclick="locateAndGenerateStory()" title="定位并生成故事">定位</button>
+        </div>
+        <div class="story-panel" id="storyPanel">
+            <div class="panel-handle"></div>
+            <button class="close-panel" onclick="closePanel()">×</button>
+            <span class="story-era" id="storyEra">--</span>
+            <h2 class="story-title" id="storyTitle">点击定位按钮获取故事</h2>
+            <p class="story-content" id="storyContent">获取您的位置后，AI将为您生成附近的历史故事...</p>
+            <div class="story-question" id="storyQuestion">准备好探索了吗？</div>
+            <div class="action-btns">
+                <button class="btn btn-primary" onclick="speakStory()">朗读故事</button>
+                <button class="btn btn-secondary" onclick="startChat()">AI对话</button>
+            </div>
+            <div class="chat-area" id="chatArea" style="display: none;">
+                <div class="chat-title">与AI向导对话</div>
+                <div class="messages" id="messages"></div>
+                <div class="input-area">
+                    <input type="text" id="userInput" placeholder="输入你的问题..." onkeypress="handleKeyPress(event)">
+                    <button onclick="sendMessage()">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
+    <script>
+        // CORS代理 + Kimi API配置
+        const KIMI_API_KEY = 'sk-kimi-zEeXr10uAzNk3MkPVitCHGdepysDT5v5dClAqUv6fxbt6vxKRdfRLl8twhtVo10c';
+        const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+
+        let map = null, currentLocation = null, isSpeaking = false, userPosition = null;
+        let isGenerating = false;
+
+        // 备用故事数据
+        const defaultStory = {
+            name: '未知地点',
+            era: '杭州 · 历史长河',
+            title: 'AI故事生成中...',
+            content: '正在根据您的位置生成专属历史故事，请稍候...',
+            question: '您想知道这个地方的什么故事？'
+        };
+
+        function initMap() {
+            if (typeof AMap === 'undefined') {
+                document.getElementById('mapLoading').innerHTML = '<p>地图加载失败<br>请检查网络连接</p>';
+                return;
+            }
+            map = new AMap.Map('map', { zoom: 13, center: [120.155, 30.25], viewMode: '2D' });
+            map.on('complete', function() { document.getElementById('mapLoading').style.display = 'none'; });
+        }
+
+        // 定位并生成故事
+        async function locateAndGenerateStory() {
+            if (isGenerating) return;
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    async function(position) {
+                        userPosition = [position.coords.longitude, position.coords.latitude];
+                        map.setCenter(userPosition);
+
+                        // 添加用户位置标记
+                        new AMap.Marker({
+                            position: userPosition,
+                            map: map,
+                            icon: 'https://webapi.amap.com/theme/v1.3/markers/n/loc.png',
+                            offset: new AMap.Pixel(-13, -30)
+                        });
+
+                        // 显示加载状态
+                        showLoadingStory();
+
+                        // 调用AI生成故事
+                        await generateStoryWithAI(position.coords.latitude, position.coords.longitude);
+                    },
+                    function(error) {
+                        alert('无法获取位置，请确保已开启定位权限');
+                    },
+                    { enableHighAccuracy: true }
+                );
+            } else {
+                alert('您的浏览器不支持地理定位');
+            }
+        }
+
+        // 显示加载状态
+        function showLoadingStory() {
+            currentLocation = {
+                name: '生成中...',
+                era: 'AI思考中',
+                title: '正在根据您的位置生成故事...',
+                content: '请稍候，Kimi AI正在为您创作专属的历史故事...',
+                question: '您想了解这个地点的什么？',
+                replies: { 'default': '故事正在生成中，请稍后再试。' }
+            };
+            updateStoryPanel();
+            document.getElementById('storyPanel').classList.add('visible');
+            isGenerating = true;
+        }
+
+        // 调用Kimi API生成故事
+        async function generateStoryWithAI(lat, lng) {
+            try {
+                const response = await fetch('https://api.moonshot.cn/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${KIMI_API_KEY}`,
+                        'Origin': window.location.origin
+                    },
+                    body: JSON.stringify({
+                        model: 'moonshot-v1-8k',
+                        messages: [
+                            {
+                                role: 'system',
+                                content: '你是一个专业的杭州历史文化向导。根据用户提供的GPS坐标，判断用户在杭州哪个著名景点或历史地点附近，然后创作一个200字左右的历史故事。故事要有趣、有代入感，包含具体的历史人物或事件。'
+                            },
+                            {
+                                role: 'user',
+                                content: `我在杭州的GPS坐标是：纬度${lat.toFixed(4)}，经度${lng.toFixed(4)}。请判断这是杭州的哪个著名地点，并为我创作一个关于这个地点的历史故事。
+
+请以JSON格式返回：
+{
+  "name": "地点名称",
+  "era": "历史时期（如：宋朝、唐朝等）",
+  "title": "故事标题",
+  "content": "故事内容（200字左右）",
+  "question": "一个引导用户思考的问题"
+}`
+                            }
+                        ],
+                        temperature: 0.7
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('API调用失败');
+                }
+
+                const data = await response.json();
+                const aiResponse = data.choices[0].message.content;
+
+                // 解析JSON
+                let storyData;
+                try {
+                    // 尝试从响应中提取JSON
+                    const jsonMatch = aiResponse.match(/\{[\s\S]*\}/);
+                    if (jsonMatch) {
+                        storyData = JSON.parse(jsonMatch[0]);
+                    } else {
+                        storyData = parseStoryFromText(aiResponse);
+                    }
+                } catch (e) {
+                    storyData = parseStoryFromText(aiResponse);
+                }
+
+                currentLocation = {
+                    name: storyData.name || '杭州',
+                    era: storyData.era || '历史时期',
+                    title: storyData.title || '历史故事',
+                    content: storyData.content || aiResponse,
+                    question: storyData.question || '您对这个地方还有什么好奇的吗？',
+                    replies: {
+                        '历史': '这里有着丰富的历史底蕴，值得细细品味。',
+                        '故事': '每个地点都有属于它的独特故事。',
+                        '为什么': '历史的形成总有其深层原因，让人深思。',
+                        'default': '这是一个很有意思的问题！历史的魅力就在于它的深度和广度。'
+                    }
+                };
+
+                updateStoryPanel();
+                setTimeout(() => speakStory(), 500);
+
+            } catch (error) {
+                console.error('生成故事失败:', error);
+                // 使用备用故事
+                currentLocation = getNearbyDefaultStory(lat, lng);
+                currentLocation.content += '（AI服务暂时不可用，显示默认故事）';
+                updateStoryPanel();
+            } finally {
+                isGenerating = false;
+            }
+        }
+
+        // 从文本解析故事
+        function parseStoryFromText(text) {
+            return {
+                name: '杭州',
+                era: '历史长河',
+                title: '一段历史',
+                content: text,
+                question: '您想了解更多吗？'
+            };
+        }
+
+        // 获取最近的默认故事
+        function getNearbyDefaultStory(lat, lng) {
+            const stories = [
+                {
+                    name: '西湖断桥',
+                    era: '宋朝 · 太平年',
+                    title: '断桥残雪与许仙白娘子的传说',
+                    content: '你现在站在了著名的西湖断桥上。这座桥始建于唐代，但在宋朝时已经闻名遐迩。断桥并非真的断了，而是因为冬日雪后，桥阳面冰雪消融，阴面仍有残雪，从远处望去仿佛断裂一般，故称断桥残雪。',
+                    question: '许仙和白娘子就是在这里相遇的。你有没有想过，为什么古人喜欢在桥上安排这样浪漫的邂逅？',
+                    replies: {
+                        '连接': '说得好！桥连接两岸，正如缘分连接两个人。',
+                        '相遇': '没错！桥是必经之地，人来人往，自然增加了相遇的机会。',
+                        '缘分': '很有悟性！桥象征着缘分和过渡。',
+                        'default': '在古代，桥是交通要道，人来人往；同时桥也象征着连接和缘分。'
+                    }
+                },
+                {
+                    name: '河坊街',
+                    era: '南宋 · 临安城',
+                    title: '南宋御街的繁华记忆',
+                    content: '你正走在河坊街上，这条街在南宋时期被称为御街，是皇帝祭祖的必经之路。当时的临安城人口超过百万，是世界上最繁华的城市之一，各国商人云集于此。',
+                    question: '想象一下，一千年前的这里，街道上车水马龙。你觉得是什么让临安城如此繁华？',
+                    replies: {
+                        '运河': '太对了！京杭大运河是当时的经济命脉。',
+                        '位置': '地理位置确实关键！水路便利，商业自然繁荣。',
+                        'default': '南宋定都带来人口和资金，京杭大运河使这里成为交通枢纽。'
+                    }
+                },
+                {
+                    name: '雷峰塔',
+                    era: '北宋 · 太平兴国二年',
+                    title: '雷峰塔的千年沧桑',
+                    content: '你抬头看到了雷峰塔。这座塔最初建于北宋太平兴国二年（977年），是吴越国王钱俶为祈求国泰民安而建。原塔在1924年倒塌，现在的是2002年重建的。',
+                    question: '如果这座塔能说话，你认为它会如何描述这千年间看到的最大变化？',
+                    replies: {
+                        '朝代': '确实！从北宋到现在，看尽了王朝兴衰。',
+                        '城市': '说得好！它看到了一座城市的繁荣与变迁。',
+                        'default': '它会看到朝代的更迭、城市的兴衰、无数人的生老病死。'
+                    }
+                }
+            ];
+            return stories[Math.floor(Math.random() * stories.length)];
+        }
+
+        // 更新故事面板
+        function updateStoryPanel() {
+            document.getElementById('storyEra').textContent = currentLocation.era;
+            document.getElementById('storyTitle').textContent = currentLocation.title;
+            document.getElementById('storyContent').textContent = currentLocation.content;
+            document.getElementById('storyQuestion').textContent = currentLocation.question;
+            document.getElementById('chatArea').style.display = 'none';
+            document.getElementById('messages').innerHTML = '';
+        }
+
+        // 显示故事面板
+        function showStoryPanel() {
+            document.getElementById('storyPanel').classList.add('visible');
+        }
+
+        function closePanel() {
+            document.getElementById('storyPanel').classList.remove('visible');
+            if (isSpeaking) { window.speechSynthesis.cancel(); isSpeaking = false; }
+        }
+
+        function speakStory() {
+            if (!currentLocation || isSpeaking) return;
+            const text = currentLocation.title + '。' + currentLocation.content;
+            if ('speechSynthesis' in window) {
+                isSpeaking = true;
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-CN'; utterance.rate = 0.9;
+                utterance.onend = () => { isSpeaking = false; };
+                window.speechSynthesis.speak(utterance);
+            } else { alert('您的浏览器不支持语音播放'); }
+        }
+
+        function startChat() {
+            const chatArea = document.getElementById('chatArea');
+            chatArea.style.display = chatArea.style.display === 'none' ? 'block' : 'none';
+            if (document.getElementById('messages').innerHTML === '') {
+                addMessage('ai', '你好！我是你的时空向导。我们现在在' + (currentLocation?.name || '这里') + '，你有什么想问的吗？');
+            }
+        }
+
+        function addMessage(sender, text) {
+            const messages = document.getElementById('messages'), avatar = sender === 'ai' ? 'AI' : '你';
+            const div = document.createElement('div'); div.className = 'message ' + sender;
+            div.innerHTML = '<div class="message-avatar">' + avatar + '</div><div class="message-bubble">' + text + '</div>';
+            messages.appendChild(div); messages.scrollTop = messages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('userInput'), text = input.value.trim();
+            if (!text) return;
+            addMessage('user', text); input.value = '';
+            setTimeout(() => { addMessage('ai', generateReply(text)); }, 500);
+        }
+
+        function generateReply(userText) {
+            if (!currentLocation || !currentLocation.replies) return '请先获取位置故事。';
+            const text = userText.toLowerCase(), replies = currentLocation.replies;
+            for (let keyword in replies) { if (text.includes(keyword)) return replies[keyword]; }
+            return replies.default;
+        }
+
+        function handleKeyPress(event) { if (event.key === 'Enter') sendMessage(); }
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>
