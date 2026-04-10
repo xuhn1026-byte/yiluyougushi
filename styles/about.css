@@ -1,0 +1,78 @@
+/**
+ * 坤瑞橡胶 - 关于我们页面样式
+ * 从 about.html 提取的内联样式
+ */
+
+/* 公司简介区域 */
+.about-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.about-intro-grid .about-content {
+    text-align: left;
+    max-width: none;
+}
+
+.about-main-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* 展示区域通用样式 */
+.showcase-section {
+    margin-bottom: 60px;
+}
+
+.showcase-title {
+    text-align: center;
+    color: var(--primary-dark);
+    margin-bottom: 40px;
+}
+
+/* 图片网格 */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.image-grid.with-margin {
+    margin-bottom: 20px;
+}
+
+/* 图片容器 */
+.image-card {
+    overflow: hidden;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.image-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.image-card img.tall {
+    height: 280px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .about-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .about-main-image {
+        height: 250px;
+    }
+}

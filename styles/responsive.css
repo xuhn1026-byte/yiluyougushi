@@ -1,0 +1,479 @@
+/* ========================================
+   坤瑞橡胶官网 - 响应式样式补充
+   ======================================== */
+
+/* 大屏设备 (1920px+) */
+@media (min-width: 1920px) {
+    :root {
+        --container-max-width: 1400px;
+    }
+    
+    .hero-carousel {
+        max-height: 900px;
+    }
+    
+    .carousel-content h1 {
+        font-size: 3.5rem;
+    }
+    
+    .carousel-content p {
+        font-size: 1.5rem;
+    }
+}
+
+/* 中大屏设备 (1366px - 1919px) */
+@media (min-width: 1366px) and (max-width: 1919px) {
+    :root {
+        --container-max-width: 1280px;
+    }
+}
+
+/* 平板横屏 (1024px - 1365px) */
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .nav-menu {
+        gap: 0;
+    }
+    
+    .nav-link {
+        padding: var(--spacing-md) var(--spacing-md);
+        font-size: 0.9rem;
+    }
+}
+
+/* 平板竖屏 (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* 导航栏隐藏，显示移动端菜单 */
+    .main-nav,
+    .language-switcher {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .mobile-nav {
+        display: block;
+    }
+    
+    /* 首页内容调整 */
+    .about-preview .container > div {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+    
+    .products-preview .container > div {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    /* 页脚调整 */
+    .footer-content {
+        grid-template-columns: 1fr 1fr !important;
+    }
+    
+    .footer-section:first-child {
+        grid-column: 1 / -1;
+    }
+}
+
+/* 手机横屏 (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+    :root {
+        --header-height: 60px;
+    }
+    
+    .main-nav,
+    .language-switcher {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .mobile-nav {
+        display: block;
+    }
+    
+    /* 轮播图 */
+    .hero-carousel {
+        height: 350px;
+        min-height: 350px;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-content p {
+        font-size: 0.95rem;
+    }
+    
+    /* 内容网格 */
+    .grid-container {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .products-preview .container > div {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .about-preview .container > div {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* 页脚 */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: var(--spacing-xl);
+    }
+    
+    .footer-description {
+        max-width: none;
+    }
+    
+    /* 页面头部 */
+    .page-header {
+        padding: 40px 0;
+    }
+    
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .page-header p {
+        font-size: 1rem;
+    }
+}
+
+/* 手机竖屏 (小于480px) */
+@media (max-width: 479px) {
+    :root {
+        --header-height: 55px;
+    }
+    
+    html {
+        font-size: 14px;
+    }
+    
+    .main-nav,
+    .language-switcher {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .mobile-nav {
+        display: block;
+    }
+    
+    /* 轮播图 */
+    .hero-carousel {
+        height: 300px;
+        min-height: 300px;
+        margin-top: var(--header-height);
+    }
+    
+    .carousel-content {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.3rem;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .carousel-content p {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .carousel-control {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .carousel-control.prev {
+        left: var(--spacing-sm);
+    }
+    
+    .carousel-control.next {
+        right: var(--spacing-sm);
+    }
+    
+    .carousel-indicators {
+        bottom: var(--spacing-md);
+        gap: var(--spacing-sm);
+    }
+    
+    .indicator {
+        width: 8px;
+        height: 8px;
+    }
+    
+    /* 内容区域 */
+    .about-preview,
+    .products-preview,
+    .content-grid {
+        padding: 40px 0 !important;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .grid-container {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-lg) !important;
+    }
+    
+    .products-preview .container > div {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-lg) !important;
+    }
+    
+    .about-preview .container > div {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+    
+    .about-preview .container > div > div:last-child {
+        height: 250px !important;
+    }
+    
+    /* 卡片 */
+    .content-card {
+        margin: 0 var(--spacing-sm);
+    }
+    
+    .card-image-container {
+        height: 160px;
+    }
+    
+    .card-content {
+        padding: var(--spacing-md);
+    }
+    
+    .card-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    /* 页脚 */
+    .footer {
+        padding: var(--spacing-xl) 0 var(--spacing-md);
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .footer-section h4 {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .footer-logo img {
+        height: 40px;
+    }
+    
+    .footer-links li {
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .footer-contact p {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .footer-copyright {
+        font-size: 0.8rem;
+    }
+    
+    /* 页面头部 */
+    .page-header {
+        padding: 30px 0;
+        margin-top: var(--header-height);
+    }
+    
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .page-header p {
+        font-size: 0.9rem;
+    }
+    
+    /* 按钮 */
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* 移动端导航 */
+    .mobile-nav-menu {
+        padding: var(--spacing-md);
+    }
+    
+    .mobile-nav-link {
+        padding: var(--spacing-md) 0;
+        font-size: 1rem;
+    }
+    
+    .mobile-dropdown-link {
+        font-size: 0.9rem;
+    }
+    
+    .mobile-lang-menu {
+        flex-wrap: wrap;
+    }
+    
+    .mobile-lang-option {
+        font-size: 0.9rem;
+    }
+}
+
+/* 超小屏幕 (小于360px) */
+@media (max-width: 359px) {
+    .carousel-content h1 {
+        font-size: 1.1rem;
+    }
+    
+    .carousel-content p {
+        font-size: 0.85rem;
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+    }
+    
+    .page-header h1 {
+        font-size: 1.3rem;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .header,
+    .mobile-nav,
+    .hero-carousel,
+    .footer {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+    
+    .page-header {
+        margin-top: 0;
+        background: none !important;
+        color: #000 !important;
+    }
+    
+    .page-header h1 {
+        color: #000 !important;
+    }
+    
+    a {
+        text-decoration: underline;
+        color: #000 !important;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #1B5E20;
+        --primary-dark: #0D3310;
+        --text-primary: #000000;
+    }
+    
+    .cta-button {
+        border: 2px solid currentColor;
+    }
+}
+
+/* 减少动画 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .carousel-slide {
+        transition: none;
+    }
+    
+    .scroll-reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* 暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+    /* 如果需要暗色模式，可以在这里添加 */
+}
+
+/* 横屏模式优化 */
+@media (orientation: landscape) and (max-height: 500px) {
+    .hero-carousel {
+        height: 100vh;
+        min-height: 300px;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .mobile-nav {
+        top: var(--header-height);
+    }
+}
+
+/* 触摸设备优化 */
+@media (pointer: coarse) {
+    .carousel-control {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .indicator {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .nav-link:hover,
+    .dropdown-link:hover {
+        background: transparent;
+    }
+    
+    .has-dropdown:hover .dropdown-menu {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .has-dropdown.active .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+    }
+}

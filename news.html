@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="坤瑞橡胶新闻资讯 - 了解公司最新动态、产品发布和行业新闻">
+    <meta name="keywords" content="坤瑞新闻,橡胶行业动态,公司新闻,产品发布">
+    <meta name="author" content="坤瑞橡胶有限公司">
+    <meta property="og:title" content="坤瑞橡胶新闻资讯">
+    <meta property="og:description" content="了解坤瑞橡胶的最新动态和行业发展">
+    <meta property="og:type" content="website">
+    <title data-i18n="title">坤瑞橡胶 - 新闻资讯</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="styles/globals.css">
+    <link rel="stylesheet" href="styles/image-containers.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <script src="scripts/language.js" defer></script>
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/performance.js" defer></script>
+    <style>
+        .page-header {
+            margin-top: 70px;
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .page-header h1 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .news-section {
+            padding: 60px 0;
+            background: var(--light-gray);
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .news-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .news-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .news-content {
+            padding: 25px;
+        }
+        .news-date {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .news-content h3 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .news-content p {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .news-link {
+            color: var(--primary-color);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .news-link:hover {
+            color: var(--primary-dark);
+        }
+        .news-link::after {
+            content: "→";
+            transition: transform var(--transition-fast);
+        }
+        .news-link:hover::after {
+            transform: translateX(3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="assets/logo-kunray.png" alt="坤瑞橡胶" onclick="goToHomeWithLang()">
+            </div>
+            <nav class="main-nav" role="navigation" aria-label="主导航">
+                <ul class="nav-menu">
+                    <li class="nav-item has-dropdown">
+                        <a href="about.html" class="nav-link" data-i18n="nav.about.main">关于我们</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html" class="dropdown-link" data-i18n="nav.about.companyProfile">公司简介</a></li>
+                            <li><a href="about.html" class="dropdown-link" data-i18n="nav.about.developmentHistory">发展历程</a></li>
+                            <li><a href="about.html" class="dropdown-link" data-i18n="nav.about.companyAnnouncements">公司公告</a></li>
+                            <li><a href="about.html" class="dropdown-link" data-i18n="nav.about.technologicalInnovation">科技创新</a></li>
+                            <li><a href="about.html" class="dropdown-link" data-i18n="nav.about.cooperationPartners">合作单位</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="products.html" class="nav-link" data-i18n="nav.products.main">坤瑞产品</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="products.html" class="dropdown-link" data-i18n="nav.products.productList">产品列表</a></li>
+                            <li><a href="products.html" class="dropdown-link" data-i18n="nav.products.afterSalesSupport">售后保障</a></li>
+                            <li><a href="products.html" class="dropdown-link" data-i18n="nav.products.productManualDownload">产品手册下载</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="javascript:alert('页面建设中，敬请期待！')" class="nav-link" data-i18n="nav.services.main">坤瑞服务</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:alert('页面建设中，敬请期待！')" class="dropdown-link" data-i18n="nav.services.caseClassification">案例分类</a></li>
+                            <li><a href="javascript:alert('页面建设中，敬请期待！')" class="dropdown-link" data-i18n="nav.services.customerReviews">客户评价</a></li>
+                            <li><a href="javascript:alert('页面建设中，敬请期待！')" class="dropdown-link" data-i18n="nav.services.businessCustomization">业务定制</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="news.html" class="nav-link" data-i18n="nav.news.main">新闻资讯</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="news.html" class="dropdown-link" data-i18n="nav.news.companyNews">公司新闻</a></li>
+                            <li><a href="video.html" class="dropdown-link" data-i18n="nav.news.videoCenter">视频中心</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="javascript:alert('页面建设中，敬请期待！')" class="nav-link" data-i18n="nav.join.main">加入坤瑞</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:alert('页面建设中，敬请期待！')" class="dropdown-link" data-i18n="nav.join.recruitmentInformation">招聘信息</a></li>
+                            <li><a href="javascript:alert('页面建设中，敬请期待！')" class="dropdown-link" data-i18n="nav.join.talentPolicy">人才政策</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <button class="lang-toggle" aria-label="切换语言" aria-expanded="false" aria-haspopup="listbox">
+                    <span class="lang-name">中文</span>
+                    <span class="lang-arrow">▼</span>
+                    <span class="lang-flag zh"></span>
+                </button>
+                <ul class="lang-dropdown">
+                    <li class="lang-option" data-lang="zh">
+                        <span class="lang-flag zh"></span>
+                        <span class="lang-name">中文</span>
+                    </li>
+                    <li class="lang-option" data-lang="en">
+                        <span class="lang-flag en"></span>
+                        <span class="lang-name">English</span>
+                    </li>
+                    <li class="lang-option" data-lang="fr">
+                        <span class="lang-flag fr"></span>
+                        <span class="lang-name">Français</span>
+                    </li>
+                </ul>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobile-nav">
+                <span class="menu-icon"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 移动端导航菜单 -->
+    <div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="移动端导航">
+        <ul class="mobile-nav-menu">
+            <li class="mobile-nav-item">
+                <a href="index.html" class="mobile-nav-link" data-i18n="nav.home">首页</a>
+            </li>
+            <li class="mobile-nav-item mobile-has-dropdown">
+                <a href="about.html" class="mobile-nav-link" data-i18n="nav.about.main">关于我们</a>
+                <button class="mobile-dropdown-toggle">▼</button>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="about.html" class="mobile-dropdown-link" data-i18n="nav.about.companyProfile">公司简介</a></li>
+                </ul>
+            </li>
+            <li class="mobile-nav-item mobile-has-dropdown">
+                <a href="products.html" class="mobile-nav-link" data-i18n="nav.products.main">坤瑞产品</a>
+                <button class="mobile-dropdown-toggle">▼</button>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="products.html" class="mobile-dropdown-link" data-i18n="nav.products.productList">产品列表</a></li>
+                </ul>
+            </li>
+            <li class="mobile-nav-item mobile-has-dropdown">
+                <a href="javascript:alert('页面建设中，敬请期待！')" class="mobile-nav-link" data-i18n="nav.services.main">坤瑞服务</a>
+                <button class="mobile-dropdown-toggle">▼</button>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="javascript:alert('页面建设中，敬请期待！')" class="mobile-dropdown-link" data-i18n="nav.services.caseClassification">案例分类</a></li>
+                    <li><a href="javascript:alert('页面建设中，敬请期待！')" class="mobile-dropdown-link" data-i18n="nav.services.customerReviews">客户评价</a></li>
+                    <li><a href="javascript:alert('页面建设中，敬请期待！')" class="mobile-dropdown-link" data-i18n="nav.services.businessCustomization">业务定制</a></li>
+                </ul>
+            </li>
+            <li class="mobile-nav-item mobile-has-dropdown">
+                <a href="news.html" class="mobile-nav-link" data-i18n="nav.news.main">新闻资讯</a>
+                <button class="mobile-dropdown-toggle">▼</button>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="news.html" class="mobile-dropdown-link" data-i18n="nav.news.companyNews">公司新闻</a></li>
+                </ul>
+            </li>
+            <li class="mobile-nav-item mobile-has-dropdown">
+                <a href="javascript:alert('页面建设中，敬请期待！')" class="mobile-nav-link" data-i18n="nav.join.main">加入坤瑞</a>
+                <button class="mobile-dropdown-toggle">▼</button>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="javascript:alert('页面建设中，敬请期待！')" class="mobile-dropdown-link" data-i18n="nav.join.recruitmentInformation">招聘信息</a></li>
+                    <li><a href="javascript:alert('页面建设中，敬请期待！')" class="mobile-dropdown-link" data-i18n="nav.join.talentPolicy">人才政策</a></li>
+                </ul>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="contact.html" class="mobile-nav-link" data-i18n="nav.contact">联系我们</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 页面头部 -->
+    <section class="page-header">
+        <div class="container">
+            <h1 data-i18n="news.pageTitle">新闻资讯</h1>
+            <p data-i18n="news.pageSubtitle">了解坤瑞橡胶的最新动态</p>
+        </div>
+    </section>
+
+    <!-- 新闻列表 -->
+    <section class="news-section">
+        <div class="container">
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-image" style="background-image: url('assets/images/news-1.jpg')"></div>
+                    <div class="news-content">
+                        <div class="news-date">2026-03-15</div>
+                        <h3 data-i18n="news.article1.title">坤瑞橡胶荣获绿色创新奖</h3>
+                        <p data-i18n="news.article1.desc">在2026年度绿色工业发展大会上，坤瑞橡胶凭借在环保橡胶材料研发方面的突出贡献，荣获"绿色创新奖"...</p>
+                        <a href="javascript:alert('页面建设中，敬请期待！')" class="news-link" data-i18n="news.readMore">阅读更多</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-image" style="background-image: url('assets/images/news-2.jpg')"></div>
+                    <div class="news-content">
+                        <div class="news-date">2026-03-10</div>
+                        <h3 data-i18n="news.article2.title">新生产线正式投产</h3>
+                        <p data-i18n="news.article2.desc">坤瑞橡胶新投资的智能化生产线正式投产，年产能提升50%，产品质量更加稳定可靠...</p>
+                        <a href="javascript:alert('页面建设中，敬请期待！')" class="news-link" data-i18n="news.readMore">阅读更多</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-image" style="background-image: url('assets/images/news-3.jpg')"></div>
+                    <div class="news-content">
+                        <div class="news-date">2026-03-05</div>
+                        <h3 data-i18n="news.article3.title">与国际知名企业达成战略合作</h3>
+                        <p data-i18n="news.article3.desc">坤瑞橡胶与多家国际知名汽车制造商签署战略合作协议，成为其长期橡胶配件供应商...</p>
+                        <a href="javascript:alert('页面建设中，敬请期待！')" class="news-link" data-i18n="news.readMore">阅读更多</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-image" style="background-image: url('assets/images/carousel-1.jpg')"></div>
+                    <div class="news-content">
+                        <div class="news-date">2026-02-28</div>
+                        <h3 data-i18n="news.article4.title">2026年度供应商大会圆满召开</h3>
+                        <p data-i18n="news.article4.desc">坤瑞橡胶2026年度供应商大会在杭州总部召开，来自全国各地的供应商代表齐聚一堂...</p>
+                        <a href="javascript:alert('页面建设中，敬请期待！')" class="news-link" data-i18n="news.readMore">阅读更多</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-image" style="background-image: url('assets/images/carousel-2.jpg')"></div>
+                    <div class="news-content">
+                        <div class="news-date">2026-02-20</div>
+                        <h3 data-i18n="news.article5.title">新产品发布会成功举行</h3>
+                        <p data-i18n="news.article5.desc">坤瑞橡胶正式发布新一代高性能氟橡胶系列产品，产品性能达到国际先进水平...</p>
+                        <a href="javascript:alert('页面建设中，敬请期待！')" class="news-link" data-i18n="news.readMore">阅读更多</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-image" style="background-image: url('assets/images/carousel-3.jpg')"></div>
+                    <div class="news-content">
+                        <div class="news-date">2026-02-15</div>
+                        <h3 data-i18n="news.article6.title">通过ISO9001质量管理体系认证</h3>
+                        <p data-i18n="news.article6.desc">坤瑞橡胶顺利通过ISO9001质量管理体系年度审核，质量管理水平持续提升...</p>
+                        <a href="javascript:alert('页面建设中，敬请期待！')" class="news-link" data-i18n="news.readMore">阅读更多</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo-container footer-logo">
+                        <img src="assets/logo-kunray-white.png" alt="坤瑞橡胶">
+                    </div>
+                    <p class="footer-description" data-i18n="footer.description">
+                        以大地之德培育工业文明 , 用橡木之仁创造材料价值
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.quickLinks">快速链接</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+                        <li><a href="about.html" data-i18n="nav.about.main">关于我们</a></li>
+                        <li><a href="products.html" data-i18n="nav.products.main">坤瑞产品</a></li>
+                        <li><a href="news.html" data-i18n="nav.news.main">新闻资讯</a></li>
+                        <li><a href="contact.html" data-i18n="nav.contact">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.contactUs">联系我们</h4>
+                    <address class="footer-contact">
+                        <p data-i18n="footer.address">地址：中国浙江省杭州市钱塘区文泽路和达城1幢28层</p>
+                        <p data-i18n="footer.phone">电话：0571-86038706</p>
+                        <p data-i18n="footer.email">邮箱：service@kunrayrubber.com</p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright" data-i18n="footer.copyright">© 2026 坤瑞橡胶. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
