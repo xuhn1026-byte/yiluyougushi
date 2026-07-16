@@ -9,9 +9,9 @@ const i18n = {
     // 中文
     zh: {
         // 页面标题
-        'title': '坤瑞橡胶',
+        'title': '坤瑞 - 特种天然橡胶国产替代先锋',
         'about.title': '坤瑞橡胶 - 关于我们',
-        'products.title': '坤瑞橡胶 - 产品中心',
+        'products.title': '坤瑞产品 - 特种天然橡胶',
         'news.title': '坤瑞橡胶 - 新闻资讯',
         'contact.title': '坤瑞橡胶 - 联系我们',
         
@@ -27,7 +27,7 @@ const i18n = {
         'nav.products.productList': '产品列表',
         'nav.products.afterSalesSupport': '售后保障',
         'nav.products.productManualDownload': '产品手册下载',
-        'nav.services.main': '坤瑞服务',
+        'nav.services.main': '坤瑞星链',
         'nav.services.caseClassification': '案例分类',
         'nav.services.customerReviews': '客户评价',
         'nav.services.businessCustomization': '业务定制',
@@ -40,39 +40,39 @@ const i18n = {
         'nav.contact': '联系我们',
         
         // 轮播图
-        'carousel.slide1.title': '绿色创新，引领未来',
-        'carousel.slide1.description': '致力于可持续发展的企业解决方案',
-        'carousel.slide1.button': '了解更多',
-        'carousel.slide2.title': '科技创新，绿色发展',
-        'carousel.slide2.description': '打造环保科技的新篇章',
-        'carousel.slide2.button': '查看项目',
-        'carousel.slide3.title': '专业团队，卓越服务',
-        'carousel.slide3.description': '为客户提供全方位的绿色解决方案',
-        'carousel.slide3.button': '关于我们',
+        'carousel.slide1.title': '特种天然橡胶 国产替代先锋',
+        'carousel.slide1.description': '聚焦军民两用特种天然橡胶材料，突破高端技术瓶颈',
+        'carousel.slide1.button': '了解产品',
+        'carousel.slide2.title': '坤瑞杭州本部',
+        'carousel.slide2.description': '总部坐落于杭州钱塘新区，引领特种天然橡胶研发创新',
+        'carousel.slide2.button': '关于我们',
+        'carousel.slide3.title': '海南儋州基地',
+        'carousel.slide3.description': '布局核心产区，构建从原料采收到加工的全流程数字化体系',
+        'carousel.slide3.button': '了解更多',
 
         // 首页内容
-        'home.aboutTitle': '关于坤瑞橡胶',
+        'home.aboutTitle': '关于我们',
         'home.aboutText1': '坤瑞橡胶有限公司是一家专注于高性能橡胶制品研发、生产和销售的高新技术企业。公司总部位于浙江省杭州市，在湛江设有坤瑞特种天然橡胶研发与产业化中心，拥有先进的生产设备和专业的技术团队。',
         'home.aboutText2': '我们致力于为客户提供优质的橡胶解决方案，产品广泛应用于汽车、机械、电子、建筑等多个领域。',
         'home.learnMore': '了解更多',
 
         // 首页核心产品
-        'home.productsTitle': '核心产品',
-        'home.product1.title': '工业橡胶密封件',
-        'home.product1.desc': '耐高温、耐腐蚀，广泛应用于机械设备',
-        'home.product2.title': '汽车橡胶配件',
-        'home.product2.desc': '减震降噪，符合国际标准，品质可靠',
-        'home.product3.title': '橡胶减震垫',
-        'home.product3.desc': '高效减震降噪，保护设备延长寿命',
-        'home.product4.title': '特种橡胶定制',
-        'home.product4.desc': '根据客户需求定制，满足特殊工况',
+        'home.productsTitle': '坤瑞产品',
+        'home.product1.title': '特种天然橡胶',
+        'home.product1.desc': '从原胶出发、可定向设计，为应用场景量身定制的高端天然橡胶',
+        'home.product2.title': '高频减振胶',
+        'home.product2.desc': '具备低损耗、高弹性和耐疲劳特性',
+        'home.product3.title': '高承载耐磨胶',
+        'home.product3.desc': '面向特种履带领域，具备抗蠕变及高耐磨特性',
+        'home.product4.title': '航空轮胎胶',
+        'home.product4.desc': '侧重高耐磨、抗冲击和耐切割性能',
         'home.viewAllProducts': '查看全部产品',
 
         // 首页统计
-        'home.stat1': '年行业经验',
-        'home.stat2': '合作客户',
-        'home.stat3': '产品种类',
-        'home.stat4': '生产基地',
+        'home.stat1': '独家自主知识产权产品',
+        'home.stat2': '深度产学研合作体系',
+        'home.stat3': '核心产区布局',
+        'home.stat4': '全流程支撑体系',
 
         // 首页联系我们
         'home.contactTitle': '联系我们',
@@ -81,7 +81,7 @@ const i18n = {
         'home.contactUs': '在线咨询',
 
         // 首页资讯
-        'news.sectionTitle': '最新资讯',
+        'news.sectionTitle': '新闻资讯',
         'news.card1.title': '坤瑞橡胶荣获绿色创新奖',
         'news.card1.description': '我们的可持续发展项目获得了行业认可，成为绿色创新的典范。',
         'news.card1.link': '阅读更多',
@@ -111,8 +111,8 @@ const i18n = {
         'about.leadership': '领导关怀',
         
         // 产品页面
-        'products.pageTitle': '坤瑞产品中心',
-        'products.pageSubtitle': '高品质橡胶产品，满足您的各种需求',
+        'products.pageTitle': '坤瑞产品',
+        'products.pageSubtitle': '满足特殊环境需求的高性能天然橡胶',
         'products.item1.name': '工业橡胶密封件',
         'products.item1.title': '工业橡胶密封件',
         'products.item1.desc': '采用优质橡胶材料，具有优异的耐磨性和密封性能，广泛应用于机械设备。',
@@ -209,7 +209,7 @@ const i18n = {
     
     // 英文
     en: {
-        'title': 'Kunray Rubber',
+        'title': 'Kunray - Specialty Natural Rubber Pioneer',
         'about.title': 'Kunray Rubber - About Us',
         'products.title': 'Kunray Rubber - Products',
         'news.title': 'Kunray Rubber - News',
@@ -226,7 +226,7 @@ const i18n = {
         'nav.products.productList': 'Product List',
         'nav.products.afterSalesSupport': 'After-sales',
         'nav.products.productManualDownload': 'Manuals',
-        'nav.services.main': 'Services',
+        'nav.services.main': 'Kunray Starlink',
         'nav.services.caseClassification': 'Cases',
         'nav.services.customerReviews': 'Reviews',
         'nav.services.businessCustomization': 'Customization',
@@ -238,15 +238,15 @@ const i18n = {
         'nav.join.talentPolicy': 'Talent Policy',
         'nav.contact': 'Contact',
         
-        'carousel.slide1.title': 'Green Innovation, Leading the Future',
-        'carousel.slide1.description': 'Committed to sustainable enterprise solutions',
-        'carousel.slide1.button': 'Learn More',
-        'carousel.slide2.title': 'Technology Innovation, Green Development',
-        'carousel.slide2.description': 'Creating a new chapter in environmental technology',
-        'carousel.slide2.button': 'View Projects',
-        'carousel.slide3.title': 'Professional Team, Excellent Service',
-        'carousel.slide3.description': 'Providing comprehensive green solutions for clients',
-        'carousel.slide3.button': 'About Us',
+        'carousel.slide1.title': 'Specialty Natural Rubber, Made in China',
+        'carousel.slide1.description': 'High-performance materials for defense and civilian applications',
+        'carousel.slide1.button': 'Explore Products',
+        'carousel.slide2.title': 'Kunray Hangzhou Headquarters',
+        'carousel.slide2.description': 'Driving specialty natural rubber research and innovation',
+        'carousel.slide2.button': 'About Us',
+        'carousel.slide3.title': 'Hainan Danzhou Base',
+        'carousel.slide3.description': 'A digital system spanning raw-material collection through processing',
+        'carousel.slide3.button': 'Learn More',
 
         // Home content
         'home.aboutTitle': 'About Kunray Rubber',
@@ -255,22 +255,22 @@ const i18n = {
         'home.learnMore': 'Learn More',
 
         // Home products
-        'home.productsTitle': 'Core Products',
-        'home.product1.title': 'Industrial Seals',
-        'home.product1.desc': 'High temperature & corrosion resistant for machinery',
-        'home.product2.title': 'Auto Parts',
-        'home.product2.desc': 'Shock absorption, meeting international standards',
-        'home.product3.title': 'Rubber Pads',
-        'home.product3.desc': 'Efficient damping, protecting equipment',
-        'home.product4.title': 'Custom Solutions',
-        'home.product4.desc': 'Tailored to meet special requirements',
+        'home.productsTitle': 'Kunray Products',
+        'home.product1.title': 'Specialty Natural Rubber',
+        'home.product1.desc': 'High-end natural rubber engineered for specific applications',
+        'home.product2.title': 'High-frequency Damping Rubber',
+        'home.product2.desc': 'Low loss, high elasticity and fatigue resistance',
+        'home.product3.title': 'High-load Wear-resistant Rubber',
+        'home.product3.desc': 'Creep resistance and high wear resistance for tracked systems',
+        'home.product4.title': 'Aviation Tire Rubber',
+        'home.product4.desc': 'High wear, impact and cut resistance',
         'home.viewAllProducts': 'View All Products',
 
         // Home stats
-        'home.stat1': 'Years Experience',
-        'home.stat2': 'Partner Clients',
-        'home.stat3': 'Product Types',
-        'home.stat4': 'Production Bases',
+        'home.stat1': 'Proprietary Product Families',
+        'home.stat2': 'Integrated R&D Partnership',
+        'home.stat3': 'Core Production Regions',
+        'home.stat4': 'End-to-end Support Areas',
 
         // Home contact
         'home.contactTitle': 'Contact Us',
@@ -307,7 +307,7 @@ const i18n = {
         'about.leadership': 'Leadership Care',
         
         'products.pageTitle': 'Kunray Products',
-        'products.pageSubtitle': 'High-quality rubber products to meet your needs',
+        'products.pageSubtitle': 'High-performance natural rubber for demanding environments',
         'products.item1.name': 'Industrial Seals',
         'products.item1.title': 'Industrial Rubber Seals',
         'products.item1.desc': 'High-quality rubber with excellent wear resistance and sealing performance.',
@@ -415,7 +415,7 @@ const i18n = {
         'nav.products.productList': 'Liste',
         'nav.products.afterSalesSupport': 'SAV',
         'nav.products.productManualDownload': 'Manuels',
-        'nav.services.main': 'Services',
+        'nav.services.main': 'Kunray Starlink',
         'nav.services.caseClassification': 'Cas',
         'nav.services.customerReviews': 'Avis',
         'nav.services.businessCustomization': 'Sur mesure',
@@ -427,15 +427,15 @@ const i18n = {
         'nav.join.talentPolicy': 'Talent',
         'nav.contact': 'Contact',
         
-        'carousel.slide1.title': 'Innovation Verte, Avenir Durable',
-        'carousel.slide1.description': 'Solutions durables pour entreprises',
-        'carousel.slide1.button': 'En Savoir Plus',
-        'carousel.slide2.title': 'Innovation Technologique',
-        'carousel.slide2.description': 'Nouveau chapitre de technologie verte',
-        'carousel.slide2.button': 'Voir Projets',
-        'carousel.slide3.title': 'Équipe Professionnelle',
-        'carousel.slide3.description': 'Solutions vertes complètes pour clients',
-        'carousel.slide3.button': 'À Propos',
+        'carousel.slide1.title': 'Caoutchouc naturel spécial, produit en Chine',
+        'carousel.slide1.description': 'Matériaux haute performance pour applications civiles et de défense',
+        'carousel.slide1.button': 'Voir les produits',
+        'carousel.slide2.title': 'Siège de Kunray à Hangzhou',
+        'carousel.slide2.description': 'Recherche et innovation en caoutchouc naturel spécial',
+        'carousel.slide2.button': 'À propos',
+        'carousel.slide3.title': 'Base de Danzhou, Hainan',
+        'carousel.slide3.description': 'Un système numérique de la collecte des matières au traitement',
+        'carousel.slide3.button': 'En savoir plus',
 
         // Accueil contenu
         'home.aboutTitle': 'À Propos de Kunray',
@@ -444,22 +444,22 @@ const i18n = {
         'home.learnMore': 'En Savoir Plus',
 
         // Accueil produits
-        'home.productsTitle': 'Produits Clés',
-        'home.product1.title': 'Joints Industriels',
-        'home.product1.desc': 'Haute température et corrosion pour machinerie',
-        'home.product2.title': 'Pièces Auto',
-        'home.product2.desc': "Amortissement aux normes internationales",
-        'home.product3.title': 'Tampons',
-        'home.product3.desc': 'Amortissement efficace, protection équipement',
-        'home.product4.title': 'Sur Mesure',
-        'home.product4.desc': "Adapté aux besoins spéciaux",
+        'home.productsTitle': 'Produits Kunray',
+        'home.product1.title': 'Caoutchouc naturel spécial',
+        'home.product1.desc': 'Un matériau haut de gamme conçu pour chaque application',
+        'home.product2.title': 'Caoutchouc antivibratoire haute fréquence',
+        'home.product2.desc': 'Faible perte, haute élasticité et résistance à la fatigue',
+        'home.product3.title': 'Caoutchouc haute charge et anti-usure',
+        'home.product3.desc': 'Résistance au fluage et à l’usure pour systèmes chenillés',
+        'home.product4.title': 'Caoutchouc pour pneus d’aviation',
+        'home.product4.desc': 'Résistance élevée à l’usure, aux chocs et aux coupures',
         'home.viewAllProducts': 'Voir Tous',
 
         // Accueil stats
-        'home.stat1': "Années d'Expérience",
-        'home.stat2': 'Clients Partenaires',
-        'home.stat3': "Types de Produits",
-        'home.stat4': 'Bases de Production',
+        'home.stat1': 'Familles de produits propriétaires',
+        'home.stat2': 'Partenariat intégré de R&D',
+        'home.stat3': 'Régions de production clés',
+        'home.stat4': 'Domaines de support de bout en bout',
 
         // Accueil contact
         'home.contactTitle': 'Contactez-nous',
@@ -496,7 +496,7 @@ const i18n = {
         'about.leadership': 'Visite des Dirigeants',
 
         'products.pageTitle': 'Produits Kunray',
-        'products.pageSubtitle': 'Produits caoutchouc de haute qualité',
+        'products.pageSubtitle': 'Caoutchouc naturel haute performance pour environnements exigeants',
         'products.item1.name': 'Joints Industriels',
         'products.item1.title': 'Joints en Caoutchouc',
         'products.item1.desc': 'Caoutchouc de haute qualité, excellente résistance.',

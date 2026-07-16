@@ -160,15 +160,19 @@ class Carousel {
         
         // 移除当前活动状态
         this.slides[this.currentIndex].classList.remove('active');
+        this.slides[this.currentIndex].setAttribute('aria-hidden', 'true');
         if (this.indicators[this.currentIndex]) {
             this.indicators[this.currentIndex].classList.remove('active');
+            this.indicators[this.currentIndex].setAttribute('aria-selected', 'false');
         }
         
         // 设置新的活动状态
         this.currentIndex = index;
         this.slides[this.currentIndex].classList.add('active');
+        this.slides[this.currentIndex].setAttribute('aria-hidden', 'false');
         if (this.indicators[this.currentIndex]) {
             this.indicators[this.currentIndex].classList.add('active');
+            this.indicators[this.currentIndex].setAttribute('aria-selected', 'true');
         }
         
         // 触发自定义事件
@@ -239,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (carouselContainer) {
         new Carousel(carouselContainer, {
             autoPlay: true,
-            interval: 5000,      // 5秒自动切换
+            interval: 8000,      // 给开屏视频和标题留出更完整的观看时间
             pauseOnHover: true,  // 鼠标悬停暂停
             transitionDuration: 800
         });

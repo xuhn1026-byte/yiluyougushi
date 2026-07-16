@@ -1,0 +1,7 @@
+.vercel
+.deploy-videos/
+.deploy-upload.*.log
+assets/node_modules/
+assets/images/videos/*.mp4
+assets/images/**/*.psd
+assets/images/**/旧的（不用）/

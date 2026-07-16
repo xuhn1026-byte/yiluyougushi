@@ -151,6 +151,11 @@ class Navigation {
         // 桌面端下拉菜单触摸支持
         if (window.matchMedia('(pointer: coarse)').matches) {
             document.querySelectorAll('.has-dropdown').forEach(item => {
+                const dropdown = item.querySelector('.dropdown-menu');
+                if (!dropdown || window.getComputedStyle(dropdown).display === 'none') {
+                    return;
+                }
+
                 item.addEventListener('click', (e) => {
                     if (e.target.classList.contains('nav-link')) {
                         e.preventDefault();
